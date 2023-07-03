@@ -136,7 +136,7 @@ const updateAvatar = async(req,res) => {
     await image.resize(250, 250);
     await image.writeAsync(`./tmp/${filename}`);
     await fs.rename(oldPath, newPath);
-    const avatarURL = path.join('public', 'avatars', avatarName);
+    const avatarURL = path.join('avatars', avatarName);
     await User.findByIdAndUpdate(req.user._id, { avatarURL })
     res.status(201).json({avatarURL});
   } catch (error) {
